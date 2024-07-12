@@ -18,14 +18,14 @@
         android:text="Нетология. Университет интернет-профессий"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/subtitle"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@id/avatar"
-        app:layout_constraintTop_toTopOf="@id/avatar"
+        app:layout_constraintEnd_toStartOf="@+id/more_button"
+        app:layout_constraintStart_toEndOf="@id/avatar_image"
+        app:layout_constraintTop_toTopOf="@id/avatar_image"
         app:layout_constraintVertical_chainStyle="packed"
         tools:visibility="visible" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/more_button"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginTop="20dp"
@@ -41,10 +41,10 @@
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
         app:barrierMargin="16dp"
-        app:constraint_referenced_ids="avatar,subtitle" />
+        app:constraint_referenced_ids="avatar_image,subtitle" />
 
     <ImageView
-        android:id="@+id/avatar"
+        android:id="@+id/avatar_image"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
@@ -64,8 +64,8 @@
         android:textAlignment="viewStart"
         app:barrierDirection="bottom"
         app:barrierMargin="16dp"
-        app:layout_constraintBottom_toBottomOf="@id/avatar"
-        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintBottom_toBottomOf="@id/avatar_image"
+        app:layout_constraintStart_toEndOf="@id/avatar_image"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -94,7 +94,7 @@
         app:layout_constraintBottom_toBottomOf="@id/desBarrier"/>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/favorite_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="0dp"
@@ -106,53 +106,53 @@
         tools:layout_editor_absoluteY="314dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/favorite_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:text="10"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+        app:layout_constraintBottom_toBottomOf="@+id/favorite_button"
+        app:layout_constraintStart_toEndOf="@+id/favorite_button"
+        app:layout_constraintTop_toTopOf="@+id/favorite_button" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/share_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/favorite_value"
+        app:layout_constraintTop_toTopOf="@+id/favorite_button"
         app:srcCompat="@drawable/baseline_share_24" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/share_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:text="5"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+        app:layout_constraintBottom_toBottomOf="@+id/share_button"
+        app:layout_constraintStart_toEndOf="@+id/share_button"
+        app:layout_constraintTop_toTopOf="@+id/share_button" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/views_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="4545"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+        app:layout_constraintBottom_toBottomOf="@+id/views_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton4" />
+        app:layout_constraintTop_toTopOf="@+id/views_button" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/views_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="0dp"
         android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/views_value"
+        app:layout_constraintTop_toTopOf="@+id/favorite_button"
         app:srcCompat="@drawable/baseline_remove_red_eye_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
