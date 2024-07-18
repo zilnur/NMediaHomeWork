@@ -13,7 +13,7 @@ data class Post(
 public fun Int.toPresentableString(): String {
     return when {
         this < 1_000 -> this.toString()
-        this in 1_000..99_999 -> {
+        this in 1_000..9_999 -> {
             val thousands = this / 1_000
             val hundreds = (this % 1_000) / 100
             if (hundreds == 0) {
