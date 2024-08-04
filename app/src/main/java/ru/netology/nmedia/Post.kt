@@ -2,12 +2,12 @@ package ru.netology.nmedia
 
 data class Post(
     val autor: String,
-    var date: String,
-    var text: String,
-    var likes: Int,
-    var shares: Int,
-    var views: Int,
-    var isLiked: Boolean
+    val date: String,
+    val text: String,
+    val likes: Int,
+    val shares: Int,
+    val views: Int,
+    val isLiked: Boolean
 )
 
 public fun Int.toPresentableString(): String {
