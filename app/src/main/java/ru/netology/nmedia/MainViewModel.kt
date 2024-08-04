@@ -5,5 +5,6 @@ import androidx.lifecycle.ViewModel
 class MainViewModel: ViewModel() {
     private val repository: MainRepository = MainRepositoryImpl()
     val data = repository.get()
-    fun like() = repository.like()
+    fun likeBy(id: Int) = repository.likeBy(id)
+    fun shareBy(id: Int) = repository.shareBy(id)
 }

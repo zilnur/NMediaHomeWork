@@ -11,8 +11,8 @@ import ru.netology.nmedia.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         val bind = ActivityMainBinding.inflate(layoutInflater)
+        enableEdgeToEdge()
         setContentView(bind.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -21,19 +21,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         val viewModel: MainViewModel by viewModels()
-        viewModel.data.observe(this) { post ->
-            with(bind) {
-                description.text = post.text
-                title.text = post.autor
-                subtitle.text = post.date
-                favoriteValue.text = post.likes.toPresentableString()
-                viewsValue.text = post.views.toPresentableString()
-                shareValue.text = post.shares.toPresentableString()
-                favoriteButton.setImageResource(
-                    if (post.isLiked) R.drawable.heart_fill else R.drawable.heart
-                )
-            }
+        val adapter = PostsAdapter(likeListener = {
+            viewModel.likeBy(it.id)
+        }, shareListener = {
+            viewModel.shareBy(it.id)
+        })
+        bind.list.adapter = adapter
+        viewModel.data.observe(this) {
+            adapter.submitList(it)
         }
-        bind.favoriteButton.setOnClickListener { viewModel.like() }
     }
 }
