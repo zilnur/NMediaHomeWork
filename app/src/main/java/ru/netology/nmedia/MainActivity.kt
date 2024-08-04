@@ -35,5 +35,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         bind.favoriteButton.setOnClickListener { viewModel.like() }
+        bind.shareButton.setOnClickListener { viewModel.share() }
     }
 }
