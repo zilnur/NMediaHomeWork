@@ -1,6 +1,9 @@
 package ru.netology.nmedia
 
+import android.hardware.input.InputManager
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -21,14 +24,48 @@ class MainActivity : AppCompatActivity() {
         }
 
         val viewModel: MainViewModel by viewModels()
-        val adapter = PostsAdapter(likeListener = {
-            viewModel.likeBy(it.id)
-        }, shareListener = {
-            viewModel.shareBy(it.id)
-        })
+        val adapter = PostsAdapter { inputType ->
+            when (inputType) {
+                is InputTypes.LikeInput -> viewModel.likeBy(inputType.post.id)
+                is InputTypes.ShareInput -> viewModel.shareBy(inputType.post.id)
+                is InputTypes.DeleteInput -> viewModel.removeBy(inputType.post.id)
+                is InputTypes.EditInput -> viewModel.edit(inputType.post)
+                else -> println()
+            }
+        }
         bind.list.adapter = adapter
         viewModel.data.observe(this) {
             adapter.submitList(it)
+        }
+        viewModel.editedData().observe(this) {
+            bind.editMessage.text = it.text
+            if (it.id == 0) {
+                bind.editView.visibility = View.INVISIBLE
+                bind.editView.visibility = View.GONE
+            } else {
+                bind.editView.visibility = View.VISIBLE
+            }
+        }
+        bind.save.setOnClickListener {
+            with(bind.textEditor) {
+                if (text.isNullOrBlank()) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Content can't be empty",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+                viewModel.changeContent(text.toString())
+                viewModel.save()
+
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
+            }
+        }
+        bind.endEditing.setOnClickListener {
+            viewModel.endEdidting()
         }
     }
 }

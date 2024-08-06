@@ -1,15 +1,16 @@
 package ru.netology.nmedia
 
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.databinding.PostActivityBinding
 
 typealias onLikeListener = (Post) -> Unit
 typealias onShareListener = (Post) -> Unit
+typealias onListener = (InputTypes) -> Unit
 
 class PostViewHolder(
     private val binding: PostActivityBinding,
-    private val likeListener: onLikeListener,
-    private val shareListener: onShareListener
+    private val listener: onListener
 ): RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         binding.apply {
@@ -23,10 +24,29 @@ class PostViewHolder(
                 if (post.isLiked) R.drawable.heart_fill else R.drawable.heart
             )
             favoriteButton.setOnClickListener{
-                likeListener(post)
+                listener(InputTypes.LikeInput(post))
             }
             shareButton.setOnClickListener {
-                shareListener(post)
+                listener(InputTypes.ShareInput(post))
+            }
+            moreButton.setOnClickListener {
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.popup_menu)
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.remove -> {
+                                listener(InputTypes.DeleteInput(post))
+                                true
+                            }
+                            R.id.edit -> {
+                                listener(InputTypes.EditInput(post))
+                                true
+                            }
+                            else -> false
+                        }
+                        false
+                    }
+                }.show()
             }
         }
     }
