@@ -1,6 +1,5 @@
 package ru.netology.nmedia
 
-import android.hardware.input.InputManager
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast

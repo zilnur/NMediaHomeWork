@@ -1,9 +1,9 @@
 package ru.netology.nmedia
 
 sealed interface InputTypes {
-    class CreateInput(val post: Post): InputTypes
-    class DeleteInput(val post: Post): InputTypes
-    class EditInput(val post: Post): InputTypes
-    class LikeInput(val post: Post): InputTypes
-    class ShareInput(val post: Post): InputTypes
+    data class CreateInput(val post: Post): InputTypes
+    data class DeleteInput(val post: Post): InputTypes
+    data class EditInput(val post: Post): InputTypes
+    data class LikeInput(val post: Post): InputTypes
+    data class ShareInput(val post: Post): InputTypes
 }
