@@ -1,4 +1,4 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.mainView
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,8 @@ class MainViewModel: ViewModel() {
         0,
         "",
         "",
-        "ttt",
+        "",
+        null,
         0,
         0,
         0,

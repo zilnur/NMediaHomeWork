@@ -1,10 +1,11 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.mainView
 
 data class Post(
     val id: Int,
     val autor: String,
     val date: String,
-    val text: String,
+    val text: String?,
+    val video: String?,
     val likes: Int,
     val shares: Int,
     val views: Int,
