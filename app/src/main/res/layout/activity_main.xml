@@ -34,7 +34,7 @@
             android:id="@+id/edit_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/barrier"
+            app:layout_constraintBottom_toBottomOf="parent"
             >
 
             <ImageView
@@ -82,51 +82,62 @@
                 android:maxLines="2"
                 app:layout_constraintStart_toEndOf="@id/edit_image"
                 app:layout_constraintTop_toBottomOf="@id/edit_label"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/barrier"
                 app:layout_constraintEnd_toStartOf="@id/end_editing"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 />
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:barrierMargin="0dp"
+                app:constraint_referenced_ids="save,text_editor" />
+
+            <EditText
+                android:id="@+id/text_editor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:hint="@string/enter_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/save"
+                app:layout_constraintBottom_toBottomOf="@id/save"
+                app:layout_constraintEnd_toStartOf="@id/save"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+            <ImageButton
+                android:id="@+id/save"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@android:drawable/screen_background_light_transparent"
+                app:srcCompat="@drawable/check_24dp_e8eaed_fill0_wght400_grad0_opsz24"
+                app:tint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="16dp"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="top"
-            app:barrierMargin="0dp"
-            app:constraint_referenced_ids="save,text_editor" />
-
-        <EditText
-            android:id="@+id/text_editor"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"
-            android:hint="@string/enter_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/save"
-            app:layout_constraintBottom_toBottomOf="@id/save"
-            app:layout_constraintEnd_toStartOf="@id/save"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            />
-
-        <ImageButton
-            android:id="@+id/save"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:drawable/screen_background_light_transparent"
-            app:srcCompat="@drawable/check_24dp_e8eaed_fill0_wght400_grad0_opsz24"
-            app:tint="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="16dp"
-            />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_button"
+        android:src="@drawable/plus"
+        style="@style/Widget.AppTheme.Custom.FAB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_view"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

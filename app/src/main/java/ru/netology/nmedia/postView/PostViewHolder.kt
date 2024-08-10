@@ -1,8 +1,16 @@
-package ru.netology.nmedia
+package ru.netology.nmedia.postView
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
+import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.nmedia.mainView.InputTypes
+import ru.netology.nmedia.mainView.Post
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostActivityBinding
+import ru.netology.nmedia.mainView.toPresentableString
 
 typealias onListener = (InputTypes) -> Unit
 
@@ -13,6 +21,20 @@ class PostViewHolder(
     fun bind(post: Post) {
         binding.apply {
             description.text = post.text
+            description.visibility = if (post.text != null) {
+                View.VISIBLE
+            } else {
+                View.INVISIBLE
+                View.GONE
+            }
+            preview.visibility = if (post.video != null) {
+                View.VISIBLE
+            } else {
+                View.INVISIBLE
+                View.GONE
+            }
+            preview.adjustViewBounds = true
+            videoTitle.text = post.video
             title.text = post.autor
             subtitle.text = post.date
             favoriteButton.isChecked = post.isLiked
@@ -42,6 +64,9 @@ class PostViewHolder(
                         }
                     }
                 }.show()
+            }
+            preview.setOnClickListener {
+                listener(InputTypes.OpenVideoInput(post.video))
             }
         }
     }
