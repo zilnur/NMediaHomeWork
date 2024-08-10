@@ -7,5 +7,6 @@
 
     <style name="Widget.AppTheme.Custom.FAB" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
         <item name="android:backgroundTint">#16D4C2</item>
+        <item name="cornerFamily">rounded</item>
     </style>
     </resources>

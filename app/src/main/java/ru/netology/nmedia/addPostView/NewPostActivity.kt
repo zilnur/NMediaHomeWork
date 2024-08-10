@@ -21,6 +21,11 @@ class NewPostActivity : AppCompatActivity() {
             insets
         }
 
+        val text = intent.getStringExtra("Text")
+        if (text != null) {
+            binding.edit.setText(text)
+        }
+
         binding.ok.setOnClickListener {
             val text = binding.edit.text.toString()
 
