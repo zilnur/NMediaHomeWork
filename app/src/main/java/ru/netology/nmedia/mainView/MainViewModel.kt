@@ -1,11 +1,13 @@
 package ru.netology.nmedia.mainView
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel: ViewModel() {
-    private val repository: MainRepository = MainRepositoryImpl()
+class MainViewModel(application: Application): AndroidViewModel(application) {
+    private val repository: MainRepository = MainRepositoryImpl(application)
     private val emptyData = Post(
         0,
         "",
