@@ -30,9 +30,12 @@ class MainActivity : AppCompatActivity() {
         }
         val viewModel: MainViewModel by viewModels()
         val intent = registerForActivityResult(NewPostActivityContract()) { result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
+            if (result != null) {
+                viewModel.changeContent(result)
+                viewModel.save()
+            } else {
+                viewModel.endEdidting()
+            }
         }
         val adapter = PostsAdapter { inputType ->
             when (inputType) {
