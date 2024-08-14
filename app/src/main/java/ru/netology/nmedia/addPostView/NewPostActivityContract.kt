@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 
 class NewPostActivityContract: ActivityResultContract<String?, String?>() {
-    override fun createIntent(context: Context, input: String?): Intent = Intent(context, NewPostActivity::class.java).apply {
+    override fun createIntent(context: Context, input: String?): Intent = Intent(context, NewPostFragment::class.java).apply {
         putExtra("Text", input)
     }
 

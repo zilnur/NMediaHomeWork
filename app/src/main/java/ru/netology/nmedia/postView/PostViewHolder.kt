@@ -1,16 +1,13 @@
 package ru.netology.nmedia.postView
 
-import android.app.Activity
-import android.content.Intent
-import android.net.Uri
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
-import ru.netology.nmedia.mainView.InputTypes
-import ru.netology.nmedia.mainView.Post
+import ru.netology.nmedia.feedView.InputTypes
+import ru.netology.nmedia.feedView.Post
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostActivityBinding
-import ru.netology.nmedia.mainView.toPresentableString
+import ru.netology.nmedia.feedView.toPresentableString
 
 typealias onListener = (InputTypes) -> Unit
 
@@ -67,6 +64,9 @@ class PostViewHolder(
             }
             preview.setOnClickListener {
                 listener(InputTypes.OpenVideoInput(post.video))
+            }
+            binding.postFragment.setOnClickListener {
+                listener(InputTypes.NavigateToPostDetails(post))
             }
         }
     }

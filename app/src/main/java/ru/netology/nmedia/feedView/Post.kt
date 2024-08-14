@@ -1,4 +1,4 @@
-package ru.netology.nmedia.mainView
+package ru.netology.nmedia.feedView
 
 data class Post(
     val id: Int,
