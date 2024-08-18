@@ -1,5 +1,7 @@
 package ru.netology.nmedia.feedView
 
+import ru.netology.nmedia.model.Post
+
 sealed interface InputTypes {
     data class CreateInput(val post: Post): InputTypes
     data class DeleteInput(val post: Post): InputTypes

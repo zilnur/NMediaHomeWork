@@ -4,10 +4,10 @@ import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.feedView.InputTypes
-import ru.netology.nmedia.feedView.Post
+import ru.netology.nmedia.model.Post
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.PostActivityBinding
-import ru.netology.nmedia.feedView.toPresentableString
+import ru.netology.nmedia.model.toPresentableString
 
 typealias onListener = (InputTypes) -> Unit
 

@@ -28,14 +28,6 @@ class FeedFragment : Fragment() {
         val viewModel: MainViewModel by viewModels(
             ownerProducer = ::requireParentFragment
         )
-        val intent = registerForActivityResult(NewPostActivityContract()) { result ->
-            if (result != null) {
-                viewModel.changeContent(result)
-                viewModel.save()
-            } else {
-                viewModel.endEdidting()
-            }
-        }
         val adapter = PostsAdapter { inputType ->
             when (inputType) {
                 is InputTypes.LikeInput -> viewModel.likeBy(inputType.post.id)
@@ -73,7 +65,6 @@ class FeedFragment : Fragment() {
 
     companion object {
         private const val TEXT_KEY = "TEXT_KEY"
-        var Bundle.textArg: String? by StringArg
         var Bundle.intArg: Int by IntArg
     }
 }
