@@ -11,13 +11,9 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentPostBinding
-import ru.netology.nmedia.databinding.PostActivityBinding
 import ru.netology.nmedia.feedView.FeedFragment.Companion.intArg
-import ru.netology.nmedia.feedView.FeedFragment.Companion.textArg
-import ru.netology.nmedia.feedView.InputTypes
 import ru.netology.nmedia.feedView.MainViewModel
-import ru.netology.nmedia.feedView.Post
-import ru.netology.nmedia.feedView.toPresentableString
+import ru.netology.nmedia.model.toPresentableString
 
 class PostFragment : Fragment() {
 

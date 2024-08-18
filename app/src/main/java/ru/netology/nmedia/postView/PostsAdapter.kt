@@ -3,7 +3,7 @@ package ru.netology.nmedia.postView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import ru.netology.nmedia.feedView.Post
+import ru.netology.nmedia.model.Post
 import ru.netology.nmedia.databinding.PostActivityBinding
 
 class PostsAdapter(
