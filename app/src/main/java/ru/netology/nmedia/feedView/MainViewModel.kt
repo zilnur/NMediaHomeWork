@@ -1,10 +1,9 @@
-package ru.netology.nmedia.mainView
+package ru.netology.nmedia.feedView
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 
 class MainViewModel(application: Application): AndroidViewModel(application) {
     private val repository: MainRepository = MainRepositoryImpl(application)
@@ -21,6 +20,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     )
     private val edited = MutableLiveData(emptyData)
     val data = repository.get()
+    var selectedPost = emptyData
 
     fun editedData(): LiveData<Post> = edited
 
@@ -29,7 +29,7 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     fun removeBy(id: Int) = repository.removeBy(id)
     fun save() {
         edited.value.let {
-            if (it != null) {
+            if (it != null && !it.text.isNullOrBlank()) {
                 repository.save(it)
             }
         }
